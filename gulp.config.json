@@ -8,7 +8,7 @@
   "tasks": {
     "browserSync": {
       "proxy": {
-        "target": "http://spring.local.bruusk.be",
+        "target": "http://spring-kit.local.bruusk.be",
         "ws": true
       },
       "options": {
