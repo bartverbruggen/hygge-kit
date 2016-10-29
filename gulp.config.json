@@ -8,7 +8,7 @@
   "tasks": {
     "browserSync": {
       "proxy": {
-        "target": "http://spring-kit.local.bruusk.be",
+        "target": "http://hygge-kit.local.bruusk.be",
         "ws": true
       },
       "options": {
@@ -50,7 +50,7 @@
         "indentedSyntax": true,
         "includePaths": [
           "./node_modules/normalize.css",
-          "./node_modules/spring"
+          "./node_modules/hygge"
         ]
       },
       "extensions": ["sass", "scss", "css"]

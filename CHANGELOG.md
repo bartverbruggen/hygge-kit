@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Gulpfile.js
 - Added svgstore for that awesome svg-spriteness
-- Moved the gulp files and starter kit to spring-kit
+- Moved the gulp files and starter kit to hygge-kit
 
 ### Changed
 - ...

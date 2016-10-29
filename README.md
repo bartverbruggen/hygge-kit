@@ -1,1 +1,1 @@
-# spring-kit
+# hygge-kit
