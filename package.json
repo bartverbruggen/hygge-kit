@@ -1,9 +1,9 @@
 {
-  "name": "spring",
+  "name": "hygge-kit",
   "version": "0.2.0",
   "description": "A great way to start every project",
   "repository": {
-    "url": "git@github.com:bartverbruggen/spring.git",
+    "url": "git@github.com:bartverbruggen/hygge-kit.git",
     "type": "git"
   },
   "author": "Bart Verbruggen <bart@bruusk.be>",
