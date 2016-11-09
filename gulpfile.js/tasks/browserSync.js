@@ -25,7 +25,9 @@ var browserSyncTask = function() {
     }),
     require('webpack-hot-middleware')(compiler)
   ];
-
+console.log('');
+console.log(config.tasks.browserSync);
+console.log('');
   browserSync.init(config.tasks.browserSync);
 };
 

@@ -2,6 +2,7 @@ var config = require('../../gulp.config');
 var gulp = require('gulp');
 var path = require('path');
 var watch = require('gulp-watch');
+var browserSync = require('browser-sync').create();
 
 var watchTask = function() {
   var watchableTasks = ['fonts', 'images', 'svgSprite','html', 'css'];

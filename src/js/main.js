@@ -3,5 +3,5 @@
 // var hygge = require('hygge/js/components/form');
 
 (function() {
-  console.log('Good to go');
+  console.log('Good to go go go!');
 }());

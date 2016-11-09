@@ -8,7 +8,7 @@
   "tasks": {
     "browserSync": {
       "proxy": {
-        "target": "http://hygge-kit.local.bruusk.be",
+        "target": "http://spring-kit.local.bruusk.be",
         "ws": true
       },
       "options": {
@@ -86,7 +86,6 @@
     },
 
     "production" : {
-      "rev": true
     }
   }
 }
