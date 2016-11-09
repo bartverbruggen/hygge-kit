@@ -8,14 +8,13 @@ module.exports = function(env) {
   var jsDest = path.resolve(config.root.dest, config.tasks.js.dest);
   var publicPath = pathToUrl(config.tasks.js.dest, '/');
 
-  env = 'development';
-
   var extensions = config.tasks.js.extensions.map(function(extension) {
     return '.' + extension;
   });
 
   var rev = config.tasks.production.rev && env === 'production';
-  var filenamePattern = rev ? '[name]-[hash].js' : '[name].js';
+  // var filenamePattern = rev ? '[name]-[hash].js' : '[name].js';
+  var filenamePattern = '[name].min.js';
 
   // console.log('');
   // console.log(rev);
@@ -48,16 +47,38 @@ module.exports = function(env) {
     webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
   }
 
-  webpackConfig.entry = config.tasks.js.entries;
-  webpackConfig.output= {
-    path: path.normalize(jsDest),
-    filename: filenamePattern,
-    publicPath: publicPath
-  };
+  // webpackConfig.entry = config.tasks.js.entries;
+  // webpackConfig.output= {
+  //   path: path.normalize(jsDest),
+  //   filename: filenamePattern,
+  //   publicPath: publicPath
+  // };
 
-  if(env === 'production') {
-    // if(rev) {
-    //   webpackConfig.plugins.push(new webpackManifest(publicPath, config.root.dest))
+
+  if (env !== 'test') {
+    // Karma doesn't need entry points or output settings
+    webpackConfig.entry = config.tasks.js.entries;
+
+    webpackConfig.output = {
+      path: path.normalize(jsDest),
+      filename: filenamePattern,
+      publicPath: publicPath
+    };
+
+    if (config.tasks.js.extractSharedJs) {
+      // Factor out common dependencies into a shared.js
+      webpackConfig.plugins.push(
+        new webpack.optimize.CommonsChunkPlugin({
+          name: 'shared',
+          filename: filenamePattern,
+        })
+      );
+    }
+  }
+
+  if (env === 'production') {
+    // if (rev) {
+    //   webpackConfig.plugins.push(new webpackManifest(publicPath, config.root.dest));
     // }
     webpackConfig.plugins.push(
       new webpack.DefinePlugin({
@@ -65,6 +86,7 @@ module.exports = function(env) {
           'NODE_ENV': JSON.stringify('production')
         }
       }),
+      new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin(),
       new webpack.NoErrorsPlugin()
     );
